@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy Calculator | Eco Watt Monitor</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f7f4; margin: 0; color: #234; }
+    header { background: #147d54; color: white; padding: 25px; text-align: center; }
+    main { max-width: 500px; margin: 30px auto; padding: 20px; background: white; border-radius: 12px; }
+    label { display: block; margin-top: 15px; }
+    input { width: 100%; padding: 10px; margin-top: 6px; box-sizing: border-box; }
+    button { margin-top: 20px; padding: 12px; width: 100%; background: #147d54; color: white; border: 0; border-radius: 6px; cursor: pointer; }
+    #result { margin-top: 20px; padding: 15px; background: #e4f5eb; border-radius: 8px; }
+    a { color: #147d54; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Energy Cost Calculator</h1>
+    <p>Estimate your household electricity costs</p>
+  </header>
+  <main>
+    <label for="watts">Appliance power (watts)</label>
+    <input id="watts" type="number" min="0" placeholder="e.g. 1500">
+
+    <label for="hours">Hours used per day</label>
+    <input id="hours" type="number" min="0" max="24" step="0.5" placeholder="e.g. 4">
+
+    <label for="days">Days used per month</label>
+    <input id="days" type="number" min="1" max="31" value="30">
+
+    <label for="rate">Electricity rate per kWh ($)</label>
+    <input id="rate" type="number" min="0" step="0.01" value="0.30">
+
+    <button onclick="calculateCost()">Calculate Cost</button>
+
+    <div id="result" aria-live="polite">Your estimated results will appear here.</div>
+
+    <p><a href="understanding-energy.html">← Understanding Energy</a></p>
+    <p><a href="appliance.html">← Appliance Monitor</a></p>
+  </main>
+
+  <script>
+    function calculateCost() {
+      const watts = Number(document.getElementById('watts').value);
+      const hours = Number(document.getElementById('hours').value);
+      const days = Number(document.getElementById('days').value);
+      const rate = Number(document.getElementById('rate').value);
+      const result = document.getElementById('result');
+
+      if (
+        document.getElementById('watts').value === '' ||
+        document.getElementById('hours').value === '' ||
+        watts <= 0 || hours < 0 || hours > 24 ||
+        days < 1 || days > 31 || rate < 0 ||
+        !Number.isFinite(watts + hours + days + rate)
+      ) {
+        result.textContent = 'Please enter valid values for all fields.';
+        return;
+      }
+
+      const dailyKwh = watts * hours / 1000;
+      const monthlyKwh = dailyKwh * days;
+      const monthlyCost = monthlyKwh * rate;
+
+      result.innerHTML =
+        '<strong>Daily consumption:</strong> ' + dailyKwh.toFixed(2) + ' kWh<br>' +
+        '<strong>Monthly consumption:</strong> ' + monthlyKwh.toFixed(2) + ' kWh<br>' +
+        '<strong>Estimated monthly cost:</strong> $' + monthlyCost.toFixed(2);
+    }
+  </script>
+</body>
+</html>
