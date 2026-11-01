@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="EcoWatt logo">
+  <circle cx="32" cy="32" r="30" fill="#D99A51"/>
+  <path d="M36 10 20 36h11l-4 18 17-28H33z" fill="#FFF8EF"/>
+  <path d="M46 14c-9 1-15 7-15 15 8 0 14-6 15-15z" fill="#C97878"/>
+</svg>
