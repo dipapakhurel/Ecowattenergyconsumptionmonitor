@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>My dashboard | EcoWatt</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script>
+    var ok = false;
+    try { ok = !!sessionStorage.getItem('em_demo'); } catch (e) {}
+    if (!ok) location.replace('login.html');
+  </script>
+  </head>
+  <body>
+    <div class="top">
+      <div class="wrap">
+        <a href="index.html">Public site</a>
+        <a class="on" href="dashboard.html">My dashboard</a>
+        <span class="sp"></span>
+        <span id="who" style="color:#fff;font-size:13px"></span>
+        <button class="tb" id="out">Log out</button>
+      </div>
+    </div>
+    <div class="logo-row">
+      <div class="wrap"><a class="brand" href="index.html"><img src="images/logo.svg" alt="" width="32" height="32" style="vertical-align:middle;margin-right:8px">EcoWatt</a></div>
+    </div>
+    <div class="wrap">
+      <div class="tabs" role="tablist">
+        <button aria-selected="true" data-t="ov">Overview</button>
+        <button aria-selected="false" data-t="an">Analytics</button>
+        <button aria-selected="false" data-t="al">Alerts</button>
+        <button aria-selected="false" data-t="go">Goals</button>
+      </div>
+      <section id="p-ov">
+        <div class="note" id="bn" role="status"></div>
+        <div class="stats">
+          <div class="box">
+            <div class="lab">Power now</div>
+            <div class="big" id="sN"></div>
+          </div>
+          <div class="box">
+            <div class="lab">Used today</div>
+            <div class="big" id="sK"></div>
+          </div>
+          <div class="box">
+            <div class="lab">Estimated cost today</div>
+            <div class="big" id="sC"></div>
+          </div>
+          <div class="box">
+            <div class="lab">Estimated CO₂ today</div>
+            <div class="big" id="sO"></div>
+          </div>
+        </div>
+        <div class="box">
+          <h3>Appliances</h3>
+          <div id="apps"></div>
+        </div>
+        <p class="lab">Figures are simulated. Cost uses $0.32 per kWh and CO₂ uses 0.7 kg per kWh as placeholder rates. Today's total runs faster than real time.</p>
+      </section>
+      <section id="p-an" hidden>
+        <div style="margin-bottom:12px">
+          <button aria-pressed="true" class="rb" data-r="d">Day</button>
+          <button aria-pressed="false" class="rb" data-r="w">Week</button>
+          <button aria-pressed="false" class="rb" data-r="m">Month</button>
+        </div>
+        <div class="box"><svg aria-label="Energy use bar chart" id="ch" role="img" viewbox="0 0 640 260" width="100%"></svg></div>
+        <p class="mu" id="sm"></p>
+      </section>
+      <section id="p-al" hidden>
+        <div class="box">
+          <label for="th"><b>Alert me when power use goes above (watts)</b></label>
+          <br/>
+          <br/>
+          <input class="in" id="th" max="10000" min="500" step="100" type="number"/>
+          <button class="cta" id="sth">Save limit</button>
+          <p class="lab" id="tm" role="status"></p>
+        </div>
+        <div class="box">
+          <h3>Alert history</h3>
+          <ul id="hi"></ul>
+        </div>
+      </section>
+      <section id="p-go" hidden>
+        <div class="box">
+          <label for="tg"><b>Monthly target (kWh)</b></label>
+          <br/>
+          <br/>
+          <input class="in" id="tg" max="2000" min="50" step="10" type="number"/>
+          <button class="cta" id="stg">Save goal</button>
+          <div class="big" id="gu" style="margin-top:20px"></div>
+          <div class="lab" id="gl"></div>
+          <div class="bar" style="margin:10px 0"><i id="gb" style="width:0"></i></div>
+          <p id="gm"><b></b></p>
+        </div>
+      </section>
+    </div>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
