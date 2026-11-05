@@ -137,9 +137,3 @@ python build/build.py
 3. Real or imported energy data
 4. Real content for all information pages
 5. Accessibility improvements, including a skip link and chart text alternatives
-
----
-
-## Acknowledgement
-
-The base EcoWatt prototype was created with the assistance of an AI tool, then reviewed, modified and extended by the team.
