@@ -140,6 +140,3 @@ python build/build.py
 
 ---
 
-## Acknowledgement
-
-The base EcoWatt prototype was created with the assistance of an AI tool, then reviewed, modified and extended by the team.
