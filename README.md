@@ -137,3 +137,9 @@ python build/build.py
 3. Real or imported energy data
 4. Real content for all information pages
 5. Accessibility improvements, including a skip link and chart text alternatives
+<<<<<<< HEAD
+=======
+
+---
+
+>>>>>>> 231c85926b22900110283df76562fe53198112de
